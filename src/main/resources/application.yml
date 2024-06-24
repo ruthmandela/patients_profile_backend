@@ -1,0 +1,43 @@
+server:
+  port:
+    8089
+  springDoc:
+    swaggerUi:
+      path: /swagger-ui.html
+spring:
+  profiles:
+    active: dev
+  application:
+    name: patients
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: ${DB_URI:jdbc:mysql://localhost:3306/patients?serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    #     password: ${DB_PASSWORD:Agosa@2013}
+    password: ${DB_PASSWORD:Ruth@2021}
+
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 12
+      minimum-idle: 5
+      max-lifetime: 1200000
+      idle-timeout: 300000
+      auto-commit: true
+      initialization-mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddlAuto: update
+rate:
+  limiter:
+    capacity: 100
+shared:
+  upload:
+    directory: /home/ruth/app/deployment/uploads
+validityInMilliseconds: ${CLIENT_TOKEN_EXPIRY_TIME_MS:180000}
+
+web:
+  cors:
+    allowed-origins: "*"
+    allowed-methods: GET,POST,PATCH,PUT,DELETE,OPTIONS,HEAD
+    max-age: 3600
