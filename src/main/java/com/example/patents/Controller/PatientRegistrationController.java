@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping( "/patient")
 
 
+
 public class PatientRegistrationController {
     @Autowired
     PatientRegistrationService patientRegistrationService;
